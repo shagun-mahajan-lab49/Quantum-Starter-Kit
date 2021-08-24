@@ -6,18 +6,16 @@ Background: open amazon on browser
 
 Scenario: search product in amazon
   Then I must see text "Select delivery location"
-  And I wait "5" seconds for "//*[@id="nav-search-keywords"]" to appear
-  When I enter "New Apple iPhone 12 Mini 64gb - blue" to "//*[@id="nav-search-keywords"]"
-  And I click on "//*[@class="nav-search-submit"]"
-  #When I scroll down
+  And I wait "5" seconds for "amazon.web.search.input" to appear
+  When I enter "New Apple iPhone 12 Mini 64gb - blue" to "amazon.web.search.input"
+  And I click on "amazon.web.search.btn"
   Then I must see text "Results"
-  And "//*[text()="New Apple iPhone 12 Mini (64GB) - Blue"]" must exist
-  When I click on "//*[text()="New Apple iPhone 12 Mini (64GB) - Blue"]"
-  And "//h1[contains(.,"New Apple iPhone 12 Mini (64GB) - Blue")]" must exist
-  And I must see text "In Stock"
-  When I scroll down
-  And I click on "//*[@id="a-autoid-2"]//*[@class="a-button-inner"]"
+  And I should see "New Apple iPhone 12 Mini (64GB) - Blue" product in search result
+  When I click on "New Apple iPhone 12 Mini (64GB) - Blue" product in search result
+  Then I should see "New Apple iPhone 12 Mini (64GB) - Blue" header on detail screen
+  When I scroll down to "amazon.web.addToCart.btn"
+  And I click on "amazon.web.addToCart.btn"
   Then I wait "3" seconds to see the text "Subtotal"
   Then I must see text "Subtotal"
   And I must see text "Proceed to Buy(1 item)"
-  And "//*[@id="sc-active-cart" and contains(.,"New Apple iPhone 12 Mini (64GB) - Blue")]" must exist
+  And I should see "New Apple iPhone 12 Mini (64GB) - Blue" product in cart

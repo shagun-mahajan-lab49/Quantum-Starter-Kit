@@ -16,6 +16,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import org.openqa.selenium.By;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,11 +59,33 @@ public class CommonStepsDefs {
 			new WebDriverTestBase().getDriver().executeScript("mobile:application:open", params);
 			new WebDriverTestBase().getDriver().findElementByXPath("//XCUIElementTypeButton[@label=\"Address\"]").click();
 			new WebDriverTestBase().getDriver().findElementByXPath("//*[@label='Address']").sendKeys(url + "\n");
-			//new WebDriverTestBase().getDriver().findElementByXPath("//*[@label='Address']").sendKeys("\n");
-
 		} else {
 			CommonStep.get(url);
 		}
 	}
-	
+
+	@When("I scroll down to \"(.*?)\"")
+	public static void scrollToElement(String locator){
+		boolean flag=true;
+		int count=1;
+		while(flag){
+			try {
+				new QAFExtendedWebElement(By.xpath(locator));
+				flag=false;
+				break;
+			}
+			catch(Exception NoSuchElementException) {
+				count=count+1;
+				Map<String, Object> params = new HashMap<>();
+				params.put("start","40%,90%");
+				params.put("end","40%,20%");
+				params.put("duration","2");
+				Object res= new WebDriverTestBase().getDriver().executeScript("mobile:touch:swipe",params);
+				if(count==5)
+				{
+					break;
+				}
+			}
+		}
+	}
 }

@@ -1,0 +1,6 @@
+amazon.web.search.input=xpath=//*[@id="nav-search-keywords"]
+amazon.web.search.btn=xpath=//*[@class="nav-search-submit"]
+amazon.web.addToCart.btn=xpath=//*[@id="add-to-cart-button"]
+amazon.web.productHeader=xpath=//h1[contains(.,"%s")]
+amazon.web.cart.product=xpath=//*[@id="sc-active-cart" and contains(.,"%s")]
+amazon.result.text=xpath=//*[text()="%s"]
