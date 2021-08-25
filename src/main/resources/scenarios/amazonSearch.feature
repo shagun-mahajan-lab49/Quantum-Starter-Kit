@@ -2,7 +2,7 @@
 Feature: Amazon Search
 
 Background: open amazon on browser
-  Given I open webpage "https://www.amazon.in/" on browser
+  Given I open "https://www.amazon.in/" website
 
 Scenario: search product in amazon
   Then I must see text "Select delivery location"
@@ -14,8 +14,8 @@ Scenario: search product in amazon
   When I click on "New Apple iPhone 12 Mini (64GB) - Blue" product in search result
   Then I should see "New Apple iPhone 12 Mini (64GB) - Blue" header on detail screen
   When I scroll down to "amazon.web.addToCart.btn"
+  And I wait for "2.0" seconds
   And I click on "amazon.web.addToCart.btn"
-  Then I wait "3" seconds to see the text "Subtotal"
   Then I must see text "Subtotal"
   And I must see text "Proceed to Buy(1 item)"
   And I should see "New Apple iPhone 12 Mini (64GB) - Blue" product in cart

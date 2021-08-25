@@ -23,6 +23,7 @@
           thread-count="10">
         <parameter name="driver.capabilities.model" value="iPhone.*"></parameter>
         <parameter name="env.resources" value="src/main/resources/ios"/>
+        <parameter name="perfecto.capabilities.browserName" value="Safari"></parameter>
         <groups>
             <run>
                 <include name="@amazonWeb" />
